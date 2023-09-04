@@ -4,8 +4,8 @@
 
 Para la creacion del proyecto primero se creo el paquete.json , ejecutando el comando: 
 
-- npm init -y y se cambio el nombre index.js por app.js
-
+- "npm init -y" ,
+- en el archivo package.json se cambio el nombre index.js por app.js
 
 Luego se ejecuto el comando :
 
