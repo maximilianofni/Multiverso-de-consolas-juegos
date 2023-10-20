@@ -1,0 +1,21 @@
+<h1> Formulario para editar un registro</h1>
+<% if (console) { %>
+<div class="col-md-4">
+    <div class="card">
+        <div class="card-header">   
+            Editar consola:
+        </div>
+        <form class="p-4" method="POST" action="/update" >
+            <input id="id" name="id" value="<%= console.id %>" hidden>
+            <div class="mb-3">
+                <label class="form-label">TITULO: </label>
+                <input type="text" class="form-control" id="title" name="title" value="<%= console.title %>" >
+            </div>
+            <div class="d-grid">
+                <input type="hidden" name="oculto" value="1">
+                <input type="submit" class="btn btn-primary" value="Guardar">
+            </div>
+        </form>
+    </div>
+</div>
+<% } %>
