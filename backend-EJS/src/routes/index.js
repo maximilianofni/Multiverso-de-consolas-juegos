@@ -4,13 +4,15 @@ const conexion = require('../database/db'); // importando la conexión a la base
 
 // mostrar todos los registros
 router.get("/", function (req, res) {
+    const mensaje = req.query.mensaje; // Obtén el valor de 'mensaje' de la URL
     conexion.query('SELECT * FROM consoles', (error, results) => {
         if (error) {
             throw error;
         } else {
-            res.render('index', { title: "consolas multiverso", results: results }); // Pasa "results" a la vista
+            res.render('index', { title: "consolas multiverso", results: results, mensaje: mensaje }); // Pasa "results" a la vista
         }
     });
+    
 });
 
 // ruta a la vista crear registros
@@ -21,31 +23,57 @@ router.get('/create', (req,res)=>{
 // ruta para guardar el registro nuevo a la base de datos
 router.post('/save', async (req, res) => {
     const { titulo } = req.body;
-    // Crea un nuevo registro en la base de datos
-    try {
-        conexion.query('INSERT INTO consoles (title) VALUES (?)', [titulo], (error, results) => {
-            if (error) {
-                console.error('Error al crear el registro:', error);
-                res.status(500).send('Error interno del servidor');
-            } else {
-                console.log('Registro creado:', titulo);
-                res.redirect('/'); // Redirige al índice
-            }
-        });
-        } catch (error) {
-            console.error('Error al crear el registro:', error);
+
+    // Primero, verifica si ya existe una consola con el mismo título
+    conexion.query('SELECT * FROM consoles WHERE title = ?', [titulo], (error, results) => {
+        if (error) {
+            console.error('Error al verificar el título:', error);
             res.status(500).send('Error interno del servidor');
+            const mensaje = {
+                type: 'error',
+                text: 'Error al verificar el título.'
+            };
+            res.redirect(`/?mensaje=${JSON.stringify(mensaje)}`);
+        } else if (results.length > 0) {
+            // Si ya existe una consola con el mismo título, muestra un mensaje de error
+            const mensaje = {
+                type: 'error',
+                text: 'Ya existe una consola con este título.'
+            };
+            res.redirect(`/?mensaje=${JSON.stringify(mensaje)}`);
+        } else {
+            // Si no existe una consola con el mismo título, crea el registro
+            conexion.query('INSERT INTO consoles (title) VALUES (?)', [titulo], (error, insertResults) => {
+                if (error) {
+                    console.error('Error al crear el registro:', error);
+                    res.status(500).send('Error interno del servidor');
+                    const mensaje = {
+                        type: 'error',
+                        text: 'Error al crear el registro.'
+                    };
+                    res.redirect(`/?mensaje=${JSON.stringify(mensaje)}`);
+                } else {
+                    const mensaje = {
+                        type: 'success',
+                        text: 'El registro se ha creado exitosamente.'
+                    };
+                    res.redirect(`/?mensaje=${JSON.stringify(mensaje)}`);
+                }
+            });
         }
     });
+});
+
   
 // Ruta para mostrar el formulario de edición de registros
 router.get('/edit/:id', (req, res)=>{
     const id = req.params.id;
+    const mensaje = req.query.mensaje; // Obtén el valor de 'mensaje' de la URL
     conexion.query('SELECT * FROM consoles WHERE id=?', [id], (error, results) =>{
         if (error) {
             throw error;
         } else {
-            res.render('edit', {console:results[0]});
+            res.render('edit', {console:results[0], mensaje});
         }
     })
 
@@ -63,12 +91,24 @@ router.post('/update', async (req, res) => {
                 res.status(500).send('Error interno del servidor');
             } else {
                 console.log('Registro modificado:', title);
-                res.redirect('/'); // Redirige al índice
+                // res.redirect('/'); // Redirige al índice
+                //res.redirect('/?mensaje=editado'); // Redirige con mensaje de éxito
+                const mensaje = {
+                    type: 'success',
+                    text: 'El registro se ha editado exitosamente.'
+                };
+                res.redirect(`/?mensaje=${JSON.stringify(mensaje)}`); // Redirige al índice con mensaje de éxito
             }
         });
         } catch (error) {
             console.error('Error al modificar el registro:', error);
             res.status(500).send('Error interno del servidor');
+            const mensaje = {
+                type: 'error',
+                text: 'Error al modificar el registro.'
+            };
+            res.redirect(`/?mensaje=${JSON.stringify(mensaje)}`); // Redirige al índice con mensaje de error
+           // res.redirect('/?mensaje=error'); // Redirige con mensaje de error
         }
     });
 
@@ -78,9 +118,19 @@ router.get('/delete/:id', (req,res)=>{
     const id = req.params.id;
     conexion.query('DELETE FROM consoles WHERE id = ?', [id], (error, results)=>{
         if (error) {
+            const mensaje = {
+                type: 'error',
+                text: 'Error al eliminar el registro.'
+            };
+            res.redirect('/?mensaje=' + encodeURIComponent(JSON.stringify(mensaje)));
             throw error;
         } else {
-            res.redirect('/');
+            //res.redirect('/');
+            const mensaje = {
+                type: 'success',
+                text: 'El registro se ha eliminado exitosamente.'
+            };
+            res.redirect('/?mensaje=' + encodeURIComponent(JSON.stringify(mensaje)));
         }
     })
 
