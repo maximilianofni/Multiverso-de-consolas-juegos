@@ -1,0 +1,49 @@
+<%- include('../templates/layout') %>
+
+<style>
+    /* Estilos personalizados para el contenedor del formulario */
+    .custom-form {
+        width: 100%;
+        max-width: 250px; /* Ajusta el tamaño del contenedor del formulario */
+        margin: 0 auto; /* Centra el formulario horizontalmente */
+    }
+
+    /* Estilos personalizados para los input */
+    .custom-input {
+        width: 100%;
+        max-width: 250px; /* Ajusta el tamaño de los input */
+        margin-bottom: 10px; /* Agrega espacio entre los input */
+    }
+
+    /* Estilos personalizados para los botones */
+    .btn-custom {
+        width: 100%;
+        max-width: 250px; /* Ajusta el tamaño de los botones al mismo que los input */
+        margin-top: 10px; /* Agrega espacio entre los botones */
+    }
+</style>
+
+<main class="form-signin text-center custom-form">
+    <form>
+        <img class="mb-4" src="/backend-EJS/src/views/images/menu.jpg" alt="" width="72" height="57">
+        <h1 class="h3 mb-3 fw-normal">Ingresar sesion</h1>
+
+        <div class="form-floating custom-form">
+            <input type="email" class="form-control custom-input" id="floatingInput" placeholder="Email">
+            <label for="floatingInput">Email</label>
+        </div>
+        <div class="form-floating custom-form">
+            <input type="password" class="form-control custom-input" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+        </div>
+        <div class="form-check text-start custom-form">
+            <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Recordar Usuario
+            </label>
+        </div>
+        <button class="btn btn-primary btn-custom" type="submit">Ingresar</button>
+        <a class="btn btn-secondary btn-custom" href="/">Cancelar</a>
+        <p class="mt-5 mb-3 text-body-secondary">&copy; 2023</p>
+    </form>
+</main>

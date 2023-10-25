@@ -1,14 +1,13 @@
 <%- include('templates/layout') %>
 
 
-<!--  -->
+<!--ALERTAS -->
 <% if (mensaje) { %>
     <div class="alert alert-<%= mensaje.type %> alert-dismissible fade show" role="alert">
         <strong><%= mensaje.text %></strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <% } %>
-
 <!-- -->
 
 <div class="container text-center" style="margin-top: 10vw;"> 

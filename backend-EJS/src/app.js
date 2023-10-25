@@ -5,6 +5,7 @@ const app = express();
 const consolesRouter = require('./routes/consolesRouter');
 const indexRouter = require('./routes/index');
 
+
 app.set('views', path.resolve(__dirname, './views'));
 app.set("view engine", "ejs");
 

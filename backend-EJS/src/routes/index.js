@@ -137,6 +137,15 @@ router.get('/delete/:id', (req,res)=>{
 
 })
 
+// ruta para acceder a la vista del login de usuarios
+router.get('/user', (req, res) => {
+    res.render('auth/user'); // Renderiza la vista user
+});
+
+// ruta para acceder a la vista home
+router.get('/home', (req, res) => {
+    res.render('home'); // Renderiza la vista user
+});
 
 
 module.exports = router;
