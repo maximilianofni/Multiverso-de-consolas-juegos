@@ -21,6 +21,15 @@
         max-width: 250px; /* Ajusta el tamaño de los botones al mismo que los input */
         margin-top: 10px; /* Agrega espacio entre los botones */
     }
+
+    #togglePassword {
+    position: absolute;
+    right: 20px; /* Ajusta la distancia del ícono del ojo desde el borde derecho */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
 </style>
 
 <main class="form-signin text-center custom-form">
@@ -32,10 +41,19 @@
             <input type="email" class="form-control custom-input" id="floatingInput" placeholder="Email">
             <label for="floatingInput">Email</label>
         </div>
+
         <div class="form-floating custom-form">
-            <input type="password" class="form-control custom-input" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
+            <input type="password" class="form-control custom-input" id="floatingPassword" placeholder="Password" aria-label="Password">
+            <div class="input-group-append">
+                <span class="input-group-text" id="togglePassword" style="cursor: pointer">
+                    <i id="passwordVisibility" class="bi bi-eye"></i>
+                </span>
+            </div>
+            <label for="floatingInput">password</label>
         </div>
+        
+        
+        
         <div class="form-check text-start custom-form">
             <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
@@ -47,3 +65,21 @@
         <p class="mt-5 mb-3 text-body-secondary">&copy; 2023</p>
     </form>
 </main>
+
+<script>
+    const passwordField = document.getElementById('floatingPassword');
+    const togglePasswordButton = document.getElementById('togglePassword');
+    const passwordVisibilityIcon = document.getElementById('passwordVisibility');
+
+    togglePasswordButton.addEventListener('click', () => {
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            passwordVisibilityIcon.classList.remove('bi-eye');
+            passwordVisibilityIcon.classList.add('bi-eye-slash');
+        } else {
+            passwordField.type = 'password';
+            passwordVisibilityIcon.classList.remove('bi-eye-slash');
+            passwordVisibilityIcon.classList.add('bi-eye');
+        }
+    });
+</script>
