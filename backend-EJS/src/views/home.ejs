@@ -1,6 +1,34 @@
 <%- include('templates/layout') %>
 
+<style>
+  .card-img-top {
+  height: 300px;
+  object-fit: cover;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.zoomed-img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.overlay img {
+  max-width: calc(100% - 40px);
+  max-height: calc(100% - 40px);
+}
+
+</style>
+<title><%= title %></title>
 <div class="container py-3">
     <header>
       <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
@@ -29,10 +57,7 @@
             <div class="card-body">
               <h1 class="card-title pricing-card-title">$50000<small class="text-body-secondary fw-light"></small></h1>
               <ul class="list-unstyled mt-3 mb-4">
-                <li>10 users included</li>
-                <li>2 GB of storage</li>
-                <li>Email support</li>
-                <li>Help center access</li>
+                <img src="/images/play5.jpg" alt="Playstation 5" class="card-img-top zoom">
               </ul>
               <button type="button" class="w-100 btn btn-lg btn-outline-primary">Ver mas</button>
             </div>
@@ -46,10 +71,7 @@
             <div class="card-body">
               <h1 class="card-title pricing-card-title">$40000<small class="text-body-secondary fw-light"></small></h1>
               <ul class="list-unstyled mt-3 mb-4">
-                <li>20 users included</li>
-                <li>10 GB of storage</li>
-                <li>Priority email support</li>
-                <li>Help center access</li>
+                <img src="/images/xbox series x.webp" alt="Xbox Series X" class="card-img-top zoom">
               </ul>
               <button type="button" class="w-100 btn btn-lg btn-outline-primary">Ver mas</button>
             </div>
@@ -58,15 +80,12 @@
         <div class="col">
           <div class="card mb-4 rounded-3 shadow-sm border-primary">
             <div class="card-header py-3 text-bg-primary border-primary">
-              <h4 class="my-0 fw-normal">Consola Asus ROG Ally</h4>
+              <h4 class="my-0 fw-normal">Consola portatil Asus ROG Ally</h4>
             </div>
             <div class="card-body">
               <h1 class="card-title pricing-card-title">$45000<small class="text-body-secondary fw-light"></small></h1>
               <ul class="list-unstyled mt-3 mb-4">
-                <li>30 users included</li>
-                <li>15 GB of storage</li>
-                <li>Phone and email support</li>
-                <li>Help center access</li>
+                <img src="/images/rog.png" alt="Asus ROG Ally" class="card-img-top zoom">
               </ul>
               <button type="button" class="w-100 btn btn-lg btn-outline-primary">Ver mas</button>
             </div>
@@ -74,4 +93,35 @@
         </div>
       </div>
   
+<!-- Agrega la biblioteca medium-zoom -->
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom"></script>
 
+<script>
+// Inicializa medium-zoom en las imágenes con la clase "zoom"
+mediumZoom('.zoom');
+
+  // Obtener la imagen
+const img = document.getElementById("play5");
+
+// Agregar un evento de clic a la imagen
+img.addEventListener("click", function() {
+  // Crear un elemento DIV para el fondo oscuro
+  const overlay = document.createElement("div");
+  overlay.classList.add("overlay");
+
+  // Crear un elemento IMG para la imagen ampliada
+  const zoomedImg = document.createElement("img");
+  zoomedImg.src = img.src;
+  zoomedImg.alt = img.alt;
+  zoomedImg.classList.add("zoomed-img");
+
+  // Agregar los elementos al DOM
+  overlay.appendChild(zoomedImg);
+  document.body.appendChild(overlay);
+
+  // Agregar un evento de clic al fondo oscuro para cerrar la imagen ampliada
+  overlay.addEventListener("click", function() {
+    overlay.remove();
+  });
+});
+</script>

@@ -9,7 +9,7 @@ router.get("/", function (req, res) {
         if (error) {
             throw error;
         } else {
-            res.render('index', { title: "consolas multiverso", results: results, mensaje: mensaje }); // Pasa "results" a la vista
+            res.render('index', { title: "crud de consolas", results: results, mensaje: mensaje }); // Pasa "results" a la vista
         }
     });
     
@@ -139,12 +139,12 @@ router.get('/delete/:id', (req,res)=>{
 
 // ruta para acceder a la vista del login de usuarios
 router.get('/user', (req, res) => {
-    res.render('auth/user'); // Renderiza la vista user
+    res.render('auth/user',{ title: "Login"}); // Renderiza la vista user
 });
 
 // ruta para acceder a la vista home
 router.get('/home', (req, res) => {
-    res.render('home'); // Renderiza la vista user
+    res.render('home', { title: "home"}); // Renderiza la vista user
 });
 
 
