@@ -1,0 +1,48 @@
+<%- include('templates/layout') %>
+
+
+<!--ALERTAS -->
+<% if (mensaje) { %>
+    <div class="alert alert-<%= mensaje.type %> alert-dismissible fade show" role="alert">
+        <strong><%= mensaje.text %></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% } %>
+<!-- -->
+
+<div class="container text-center" style="margin-top: 10vw;"> 
+    <h1>Formulario de modificar consola</h1>
+    <div class="col-md-4 col-sm-12 mx-auto mt-4">
+        <div class="card">
+            <div class="card-header">Modificar consola:</div>
+            <form class="p-4" method="POST" action="/update" onsubmit="return validateForm()">
+                <input id="id" name="id" value="<%= console.id %>" hidden>
+                <div class="mb-3">
+                    <label class="form-label"><span style="color: red;">*</span> TITULO:</label>
+                    <input type="text" class="form-control" id="title" name="title" value="<%= console.title %>" >
+                    <div id="tituloError" class="text-danger"></div>
+                </div>
+                <div class="d-grid">
+                    <input type="hidden" name="oculto" value="1">
+                    <input type="submit" class="btn btn-primary" value="Modificar">
+                    <a class="btn btn-secondary mt-3" href="/productos">Cancelar</a> 
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    const titleInput = document.getElementById('title');
+    const tituloError = document.getElementById('tituloError');
+
+    function validateForm() {
+        if (titleInput.value.trim() === '') {
+            tituloError.textContent = 'Este campo es requerido.';
+            return false; // No se envía el formulario
+        } else {
+            tituloError.textContent = ''; // Limpiar el mensaje de error si es válido
+            return true; // Envía el formulario
+        }
+    }
+</script>

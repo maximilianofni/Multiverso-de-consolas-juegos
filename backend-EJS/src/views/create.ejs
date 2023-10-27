@@ -1,0 +1,39 @@
+<%- include('templates/layout') %>
+
+<div class="container text-center" style="margin-top: 10vw;"> 
+    <h1>Formulario de crear consola</h1>
+    <div class="col-md-4 col-sm-12 mx-auto mt-4"> <!-- Agregamos col-sm-12 para ajustar el centrado en modo celular -->
+        <div class="card">
+            <div class="card-header">Nueva consola:</div>
+            <form class="p-4" method="POST" action="/save">
+                <div class="mb-3">
+                    <label class="form-label"><span style="color: red;">*</span> TITULO:</label>
+                    <input type="text" class="form-control" id="titulo" name="titulo" autofocus required >
+                    <div id="tituloError" class="text-danger"></div>
+                </div>
+                <div class="d-grid">
+                    <input type="hidden" name="oculto" value="1">
+                    <input type="submit" class="btn btn-primary" value="Guardar">
+                    <a class="btn btn-secondary mt-3" href="/productos">Cancelar</a> 
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    const tituloInput = document.getElementById('titulo');
+    const tituloError = document.getElementById('tituloError');
+
+    function validateForm() {
+        if (tituloInput.value.trim() === '') {
+            tituloError.textContent = 'Este campo es requerido.';
+            return false; // No se envía el formulario
+        } else {
+            tituloError.textContent = ''; // Limpiar el mensaje de error si es válido
+            return true; // Envía el formulario
+        }
+    }
+
+    tituloInput.addEventListener('blur', validateForm);
+</script>

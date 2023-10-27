@@ -1,0 +1,213 @@
+<%- include('templates/layout') %>
+
+<style>
+  .card-img-top {
+  height: 300px;
+  object-fit: cover;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.zoomed-img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.overlay img {
+  max-width: calc(100% - 40px);
+  max-height: calc(100% - 40px);
+}
+
+</style>
+<title><%= title %></title>
+<div class="container py-3">
+    <header>
+      <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+        <h1 class="display-4 fw-normal text-body-emphasis">¡Bienvenido/a a nuestro sitio!</h1>
+        <p class="fs-5 text-body-secondary">El lugar ideal para explorar y disfrutar de las mejores consolas de videojuegos! 
+            Aquí podrás encontrar una amplia selección de consolas, tanto nuevas como antiguas.
+            Sumérgete en nuestra colección y descubre las consolas más populares de todas las épocas.
+            Ya sea que busques una consola retro para revivir la nostalgia o una consola moderna para jugar los últimos lanzamientos, ¡aquí encontrarás todo lo que necesitas!
+            ¡Prepárate para vivir una experiencia única en nuestro sitio de consolas de videojuegos!
+        </p>
+      </div>
+    </header>
+  
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+        <h2 class="display-6 fw-normal text-body-emphasis">Lo último en consolas</h2>
+    </div>
+
+
+<main>
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    <!-- card de la consola play5-->
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">Playstation 5</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">$50000<small class="text-body-secondary fw-light"></small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <img src="/images/play5.jpg" alt="Playstation 5" class="card-img-top zoom">
+                </ul>
+                <button type="button" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="modal" data-bs-target="#playstationModal">Ver mas</button>
+              </div>
+            </div>
+          </div>
+    <!-- Modal de la play5 -->
+    <div class="modal fade" id="playstationModal" tabindex="-1" aria-labelledby="playstationModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="playstationModalLabel">Información adicional de la Playstation 5</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- Agrega la información adicional que deseas mostrar aquí -->
+            <p><strong>Descripción:</strong> La Playstation 5 es una consola de gran tamaño que ha sido diseñada para operar tanto en vertical como horizontal y que cuenta con un diseño blanco </p>
+            La PS5 opera para brindar a sus jugadores un nuevo nivel en lo que se refiere a experiencia de juego por lo que es capaz de ofrecer hasta resolución dinámica 8K y HDR, audio 3D y 120 fps en TV compatibles.
+            <p><strong>Especificaciones Relevantes:</strong></p> 
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong> Procesador: </strong> Ryzen ZEN 2 8 Cores, 16 Threads 3,5 GHz</li>
+                <li class="list-group-item"><strong> Tarjeta gráfica:</strong> AMD Radeon RDNA 2 Based graphics engineup to 2.3 Ghz (10.3 TFLOPS)</li>
+                <li class="list-group-item"><strong> Memoria RAM: </strong> GDDR6 16 GB 448 GB/S Bandwidth</li>
+                <li class="list-group-item"><strong> SSD: </strong> 825 GB 5,5 GB/S Raw</li>
+              </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- card de la consola Xbox series x-->
+    <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">Xbox Series X</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">$40000<small class="text-body-secondary fw-light"></small></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <img src="/images/xbox series x.webp" alt="Xbox Series X" class="card-img-top zoom">
+              </ul>
+              <button type="button" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="modal" data-bs-target="#xboxModal">Ver mas</button>
+            </div>
+          </div>
+    </div>
+<!-- Modal de la Xbox series x -->
+<div class="modal fade" id="xboxModal" tabindex="-1" aria-labelledby="xboxModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="xbox">Información adicional de Xbox Series X</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Agrega la información adicional que deseas mostrar aquí -->
+        <p><strong>Descripción:</strong> La Xbox Series X es la consola de Xbox más rápida y potente de la historia, ya que logra alcanzar la soñada resolución 4K (con posibilidad de HDR 8K), ray tracing y hasta 120 fps. Además, gracias a su almacenamiento SSD, la descarga de juegos y contenido es sumamente más rápida.
+          Es aquí donde los 12 teraflops de potencia, gracias a la actuación de Zen 2 y RDNA 2 de AMD sacan a relucir algunos de los grandes puntos a favor de la consola, su Smart Delivery, reanudación rápida de juegos y su perfecta optimización.</p>
+        <p><strong>Especificaciones Relevantes:</strong></p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong> Procesador: </strong> CPU Zen 2 personaliza de 8 núcleos a 3,8 GHz (3,66 GHz con SMT)</li>
+          <li class="list-group-item" ><strong> Tarjeta gráfica:</strong> GPU de 12 TERAFLOPS, 52 CU a 1,825 GHz con RDNA 2 personalizada</li>
+          <li class="list-group-item" ><strong> Memoria: </strong> GDDR6 de 16 GB</li>
+          <li class="list-group-item"><strong> Almacenamiento interno: </strong> SSD NVME personalizado de 1 TB (ampliable)</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--fin del modal-->
+<!-- card de la consola portatil asus rog ally-->
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm border-primary">
+            <div class="card-header py-3 text-bg-primary border-primary">
+              <h4 class="my-0 fw-normal">Consola portatil Asus ROG Ally</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">$45000<small class="text-body-secondary fw-light"></small></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <img src="/images/rog.png" alt="Asus ROG Ally" class="card-img-top zoom">
+              </ul>
+              <button type="button" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="modal" data-bs-target="#rogModal">Ver mas</button>
+            </div>
+          </div>
+        </div>
+        <!-- Modal de la consola asus rog Ally -->
+        <div class="modal fade" id="rogModal" tabindex="-1" aria-labelledby="rogModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="rog">Información adicional de la Asus ROG Ally</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <!-- Agrega la información adicional que deseas mostrar aquí -->
+                <p><strong>Descripción:</strong> La Consola Asus ROG Ally es una consola portatil  es simplemente impresionante lo que ha sido capaz de conseguir ASUS con la integración de la APU AMD Ryzen Z1 Extreme con sus 8 núcleos</p>
+                <p><strong>Especificaciones Relevantes:</strong> </p>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"> <strong>Pantalla táctil </strong> de 7 pulgadas.</li>
+                  <li class="list-group-item"> <strong>Resolución</strong> Full HD 1920 x 1080. </li>
+                  <li class="list-group-item"> <strong> CPU </strong> AMD Ryzen Z1 Extreme,  8 núcleos y 16 hilos Zen 4.</li>
+                  <li class="list-group-item"> <strong> Soporte </strong> para GPU Externa ROG XG Mobile (hasta RTX 4090) </li>
+                  <li class="list-group-item"> <strong> Memoria RAM: </strong> 16 GB LPDDR5 en doble canal a 6.400 MHz. </li>
+                  <li class="list-group-item"> <strong> Almacenamiento: </strong>  512 GB SSD PCI Express 3.0. </li>
+                  <li class="list-group-item"> <strong> Sistema de refrigeración </strong> con HeatPipes Anti-Gravedad</li>          
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--fin del modal-->       
+</div>
+
+  
+<!-- Agrega la biblioteca medium-zoom -->
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom"></script>
+
+<script>
+// Inicializa medium-zoom en las imágenes con la clase "zoom"
+mediumZoom('.zoom');
+
+  // Obtener la imagen
+const img = document.getElementById("play5");
+
+// Agregar un evento de clic a la imagen
+img.addEventListener("click", function() {
+  // Crear un elemento DIV para el fondo oscuro
+  const overlay = document.createElement("div");
+  overlay.classList.add("overlay");
+
+  // Crear un elemento IMG para la imagen ampliada
+  const zoomedImg = document.createElement("img");
+  zoomedImg.src = img.src;
+  zoomedImg.alt = img.alt;
+  zoomedImg.classList.add("zoomed-img");
+
+  // Agregar los elementos al DOM
+  overlay.appendChild(zoomedImg);
+  document.body.appendChild(overlay);
+
+  // Agregar un evento de clic al fondo oscuro para cerrar la imagen ampliada
+  overlay.addEventListener("click", function() {
+    overlay.remove();
+  });
+});
+</script>
