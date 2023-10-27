@@ -3,8 +3,8 @@ const path = require("path");
 const methodOverride = require("method-override");
 const app = express();
 const consolesRouter = require('./routes/consolesRouter');
+//const indexRouter = require('./routes/index');
 const indexRouter = require('./routes/index');
-
 
 app.set('views', path.resolve(__dirname, './views'));
 app.set("view engine", "ejs");

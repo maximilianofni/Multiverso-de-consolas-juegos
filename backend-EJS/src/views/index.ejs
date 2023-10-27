@@ -30,6 +30,7 @@
     <a href="/create" class=" btn btn-outline-primary mt-4"> <i class="bi bi-plus-circle"></i> Agregar </a>
 </br>
    <!---->
+   
    <table class="table table-bordered table-striped text-center mt-4">
     <thead>
         <tr>
@@ -43,7 +44,7 @@
         <% results.forEach((console) => { %>
         <tr>
             <td scope="row"> <%= console.id %> </td>
-            <td> <%= console.title %> </td>
+            <td> <strong> <%= console.title %>   </strong> </td>
             <td><a class="btn btn-outline-warning" href="/edit/<%= console.id %>"><i class="bi bi-pencil-square"></i> Modificar</a></td>
             <!-- <td><a onclick="return confirm('Estas seguro de eliminar?');" class="btn btn-outline-danger" href="/delete/<%= console.id %>"><i class="bi bi-trash"></i></a></td>  -->
            <!-- Botón para mostrar el modal de eliminación -->
@@ -82,6 +83,7 @@
     </tbody>
 </table>
    <!---->
+   
 </div>
 
 <footer class="container-fluid bg-primary fixed-bottom">

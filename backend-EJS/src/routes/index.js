@@ -9,11 +9,23 @@ router.get("/", function (req, res) {
         if (error) {
             throw error;
         } else {
+            res.render('home', { title: "home" });
+            //res.render('index', { title: "crud de consolas", results: results, mensaje: mensaje }); // Pasa "results" a la vista
+        }
+    });
+});
+//
+router.get("/productos", function (req, res) {
+    const mensaje = req.query.mensaje; // Obtén el valor de 'mensaje' de la URL
+    conexion.query('SELECT * FROM consoles', (error, results) => {
+        if (error) {
+            throw error;
+        } else {
             res.render('index', { title: "crud de consolas", results: results, mensaje: mensaje }); // Pasa "results" a la vista
         }
     });
-    
 });
+//
 
 // ruta a la vista crear registros
 router.get('/create', (req,res)=>{
@@ -33,14 +45,14 @@ router.post('/save', async (req, res) => {
                 type: 'error',
                 text: 'Error al verificar el título.'
             };
-            res.redirect(`/?mensaje=${JSON.stringify(mensaje)}`);
+            res.redirect(`/productos?mensaje=${JSON.stringify(mensaje)}`);
         } else if (results.length > 0) {
             // Si ya existe una consola con el mismo título, muestra un mensaje de error
             const mensaje = {
                 type: 'error',
                 text: 'Ya existe una consola con este título.'
             };
-            res.redirect(`/?mensaje=${JSON.stringify(mensaje)}`);
+            res.redirect(`/productos?mensaje=${JSON.stringify(mensaje)}`);
         } else {
             // Si no existe una consola con el mismo título, crea el registro
             conexion.query('INSERT INTO consoles (title) VALUES (?)', [titulo], (error, insertResults) => {
@@ -51,13 +63,13 @@ router.post('/save', async (req, res) => {
                         type: 'error',
                         text: 'Error al crear el registro.'
                     };
-                    res.redirect(`/?mensaje=${JSON.stringify(mensaje)}`);
+                    res.redirect(`/productos?mensaje=${JSON.stringify(mensaje)}`);
                 } else {
                     const mensaje = {
                         type: 'success',
                         text: 'El registro se ha creado exitosamente.'
                     };
-                    res.redirect(`/?mensaje=${JSON.stringify(mensaje)}`);
+                    res.redirect(`/productos?mensaje=${JSON.stringify(mensaje)}`);
                 }
             });
         }
@@ -97,7 +109,7 @@ router.post('/update', async (req, res) => {
                     type: 'success',
                     text: 'El registro se ha editado exitosamente.'
                 };
-                res.redirect(`/?mensaje=${JSON.stringify(mensaje)}`); // Redirige al índice con mensaje de éxito
+                res.redirect(`/productos?mensaje=${JSON.stringify(mensaje)}`); // Redirige al índice con mensaje de éxito
             }
         });
         } catch (error) {
@@ -107,7 +119,7 @@ router.post('/update', async (req, res) => {
                 type: 'error',
                 text: 'Error al modificar el registro.'
             };
-            res.redirect(`/?mensaje=${JSON.stringify(mensaje)}`); // Redirige al índice con mensaje de error
+            res.redirect(`/productos?mensaje=${JSON.stringify(mensaje)}`); // Redirige al índice con mensaje de error
            // res.redirect('/?mensaje=error'); // Redirige con mensaje de error
         }
     });
@@ -122,7 +134,7 @@ router.get('/delete/:id', (req,res)=>{
                 type: 'error',
                 text: 'Error al eliminar el registro.'
             };
-            res.redirect('/?mensaje=' + encodeURIComponent(JSON.stringify(mensaje)));
+            res.redirect('/productos?mensaje=' + encodeURIComponent(JSON.stringify(mensaje)));
             throw error;
         } else {
             //res.redirect('/');
@@ -130,7 +142,7 @@ router.get('/delete/:id', (req,res)=>{
                 type: 'success',
                 text: 'El registro se ha eliminado exitosamente.'
             };
-            res.redirect('/?mensaje=' + encodeURIComponent(JSON.stringify(mensaje)));
+            res.redirect('/productos?mensaje=' + encodeURIComponent(JSON.stringify(mensaje)));
         }
     })
 
@@ -144,7 +156,7 @@ router.get('/user', (req, res) => {
 
 // ruta para acceder a la vista home
 router.get('/home', (req, res) => {
-    res.render('home', { title: "home"}); // Renderiza la vista user
+    res.render('home', { title: "home"}); // Renderiza la vista home
 });
 
 

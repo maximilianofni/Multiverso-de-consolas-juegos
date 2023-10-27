@@ -15,19 +15,26 @@
             margin-right: 10px; /* Ajusta el margen derecho según tus necesidades */
         }
 
+        body {
+            overflow-y: scroll;
+        }    
+        .container {
+            margin-bottom: 100px; /* Ajusta la cantidad de margen según tus necesidades */
+        }
+
     .navbar-nav .nav-item .nav-link {
         text-decoration: none;
         color: #000; /* Color de texto predeterminado */
         border-bottom: 2px solid transparent; /* Subrayado transparente en todos los enlaces */
     }
-
+/*
     .navbar-nav .nav-item .nav-link:hover {
-        border-bottom: 2px solid #007bff; /* Subrayado azul al pasar el mouse */
-    }
-
+        border-bottom: 2px solid #007bff; /* Subrayado azul al pasar el mouse 
+    } */
+/*
     .navbar-nav .nav-item .nav-link.active {
-        border-bottom: 2px solid #007bff; /* Subrayado azul en el enlace activo */
-    }
+        border-bottom: 2px solid #007bff;  Subrayado azul en el enlace activo 
+    }*/
     .navbar-nav .nav-item .nav-link {
         color: #007bff; /* Color azul para el texto del menú */
         border: none; /* Eliminar cualquier borde predeterminado */
@@ -51,26 +58,6 @@
   </head>
   <body>
    <!-- comienzo del menú aquí -->
-   <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/home"><img src="/images/logo2.png" alt="Logo" class="logo-img"><span class="fs-4">Consolas multiverso</span></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/home">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/">Productos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/user">Usuario</a>
-            </li>
-        </ul>
-    </div>
-</nav>     -->
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/home"><img src="/images/logo2.png" alt="Logo" class="logo-img"><span class="fs-4">Consolas multiverso</span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,10 +66,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="/home">Home</a>
+                <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/">Productos</a>
+                <a class="nav-link" href="/productos">Productos</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/user">Usuario</a>
@@ -92,7 +79,6 @@
 </nav>
 
  <!-- fin del menú  -->
-
  
 <footer class="container-fluid bg-primary fixed-bottom">
  <div class="row">
